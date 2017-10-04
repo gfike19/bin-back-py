@@ -16,21 +16,24 @@ def getBinMsg(msg):
 def writeLines(draw, msg, img_size, txt_color, font, text_size):
     leng = len(msg)
     idx = 0
-    for x in range(1, img_size[0] - 1, text_size):
-        for y in range(1, img_size[1] - 1, text_size):
-            draw.text((y,x),msg[idx % leng], txt_color, font=font)
+    for x in range(0, img_size[1], text_size):
+        for y in range(0, img_size[0], text_size):
+            draw.text((y,x),msg[idx], txt_color, font=font)
             idx += 1
+            if idx > leng - 1:
+                idx = 0
 
 name = input("What will be the name of this image be?: ")
 wid = int(input("What is the width of this image?: "))
 ht = int(input("What is the height of this image?: "))
 img_size = (wid, ht)
 txt_color = input("What's the color of the text?: ")
-back = input("What is the background for this immage?: ")
+back = input("What is the background color for this immage?: ")
 msg = input("What is the message to be converted?: ")
 msg = getBinMsg(msg)
 text_size = int(input("What size will the font be?: "))
 
+e = ""
 
 try:
     img = Image.new("RGB", img_size, back)
@@ -44,4 +47,5 @@ try:
 except Exception as e:
     print("\n" + "Error occured: " + str(e))
 
-print("\n" + "Image " + name + " has been succesfully created!")
+if e == "":
+    print("\n" + "Image " + name + " has been succesfully created!")
