@@ -44,4 +44,4 @@ try:
 except Exception as e:
     print("\n" + "Error occured: " + str(e))
 
-print("\n" + "Image " + name + " has been succesfully created!")10
+print("\n" + "Image " + name + " has been succesfully created!")
