@@ -13,7 +13,7 @@ def getBinMsg(msg):
 
     return msg 
 
-def writeLines(draw, msg, img_size, txt_color, font, text_size):
+def writeLinesRTL(draw, msg, img_size, txt_color, font, text_size):
     leng = len(msg)
     idx = 0
     for x in range(0, img_size[1], text_size):
@@ -41,7 +41,7 @@ try:
     # font = ImageFont.truetype(<font-file>, <font-size>)
     font = ImageFont.truetype("arial.ttf", text_size)
     # draw.text((x, y),"Sample Text",(r,g,b))
-    writeLines(draw, msg, img_size, txt_color, font, text_size)
+    writeLinesRTL(draw, msg, img_size, txt_color, font, text_size)
     name += ".jpg"
     img.save(name)
 except Exception as e:
