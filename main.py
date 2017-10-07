@@ -46,6 +46,3 @@ try:
     img.save(name)
 except Exception as e:
     print("\n" + "Error occured: " + str(e))
-
-if e == "":
-    print("\n" + "Image " + name + " has been succesfully created!")
