@@ -16,7 +16,7 @@ def getBinMsg(msg):
 def writeLinesRTL(draw, msg, img_size, txt_color, font, text_size):
     leng = len(msg)
     idx = 0
-    for x in range(0, img_size[1], text_size):
+    for x in range(0, img_size[1], text_size + text_size // 2):
         for y in range(0, img_size[0], text_size):
             draw.text((y,x),msg[idx], txt_color, font=font)
             idx += 1
@@ -27,7 +27,7 @@ def writeLinesTTB(draw, msg, img_size, txt_color, font, text_size):
     leng = len(msg)
     idx = 0
     for x in range(0, img_size[0], text_size):
-        for y in range(0, img_size[1], text_size):
+        for y in range(0, img_size[1], text_size + text_size // 2):
             draw.text((x,y),msg[idx], txt_color, font=font)
             idx += 1
             if idx > leng - 1:
