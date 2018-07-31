@@ -44,7 +44,7 @@ bin_stat = input("Binary? (y/n) ")
 if bin_stat == "y":
     msg = getBinMsg(msg)
 text_size = int(input("What size will the font be?: "))
-
+direction = input("Draw the image right to left (RTL) or top to bottom (TTB)? ")
 e = ""
 
 try:
@@ -53,7 +53,10 @@ try:
     # font = ImageFont.truetype(<font-file>, <font-size>)
     font = ImageFont.truetype("arial.ttf", text_size)
     # draw.text((x, y),"Sample Text",(r,g,b))
-    writeLinesRTL(draw, msg, img_size, txt_color, font, text_size)
+    if direction == "RTL":
+        writeLinesRTL(draw, msg, img_size, txt_color, font, text_size)
+    if direction == "TTB":
+        writeLinesTTB(draw, msg, img_size, txt_color, font, text_size)
     #writeLinesTTB(draw, msg, img_size, txt_color, font, text_size)
     name += ".jpg"
     img.save(name)
