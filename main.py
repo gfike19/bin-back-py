@@ -33,32 +33,43 @@ def writeLinesTTB(draw, msg, img_size, txt_color, font, text_size):
             if idx > leng - 1:
                 idx = 0
 
-name = input("What will be the name of this image be?: ")
-wid = int(input("What is the width of this image?: "))
-ht = int(input("What is the height of this image?: "))
-img_size = (wid, ht)
-txt_color = input("What's the color of the text?: ")
-back = input("What is the background color for this immage?: ")
-msg = input("What is the message?: ")
-bin_stat = input("Binary? (y/n) ")
-if bin_stat == "y":
-    msg = getBinMsg(msg)
-text_size = int(input("What size will the font be?: "))
-direction = input("Draw the image right to left (RTL) or top to bottom (TTB)? ")
-e = ""
+def main():   
+    name = input("What will be the name of this image be?: ")
+    wid = int(input("What is the width of this image?: "))
+    ht = int(input("What is the height of this image?: "))
+    img_size = (wid, ht)
+    txt_color = input("What's the color of the text?: ")
+    back = input("What is the background color for this immage?: ")
+    msg = input("What is the message?: ")
+    bin_stat = input("Binary? (y/n) ")
+    if bin_stat == "y":
+        msg = getBinMsg(msg)
+    text_size = int(input("What size will the font be?: "))
+    direction = input("Draw the image right to left (RTL) or top to bottom (TTB)? ")
+    e = ""
+    # name = "test"
+    # img_size = (1024, 768)
+    # txt_color = "white"
+    # back = "black"
+    # msg = "test"
+    # bin_stat = "n"
+    # text_size = 24
+    # direction = "RTL"
+    try:
+        img = Image.new("RGB", img_size, back)
+        draw = ImageDraw.Draw(img)
+        # font = ImageFont.truetype(<font-file>, <font-size>)
+        font = ImageFont.truetype("arial.ttf", text_size)
+        # draw.text((x, y),"Sample Text",(r,g,b))
+        if direction == "RTL":
+            writeLinesRTL(draw, msg, img_size, txt_color, font, text_size)
+        if direction == "TTB":
+            writeLinesTTB(draw, msg, img_size, txt_color, font, text_size)
+        name += ".jpg"
+        img.save(name)
+        print(name, "image was sucessfully made!")
+    except Exception as e:
+        print("\n" + "Error occured: " + str(e))
 
-try:
-    img = Image.new("RGB", img_size, back)
-    draw = ImageDraw.Draw(img)
-    # font = ImageFont.truetype(<font-file>, <font-size>)
-    font = ImageFont.truetype("arial.ttf", text_size)
-    # draw.text((x, y),"Sample Text",(r,g,b))
-    if direction == "RTL":
-        writeLinesRTL(draw, msg, img_size, txt_color, font, text_size)
-    if direction == "TTB":
-        writeLinesTTB(draw, msg, img_size, txt_color, font, text_size)
-    #writeLinesTTB(draw, msg, img_size, txt_color, font, text_size)
-    name += ".jpg"
-    img.save(name)
-except Exception as e:
-    print("\n" + "Error occured: " + str(e))
+if __name__ == "__main__":
+    main()
