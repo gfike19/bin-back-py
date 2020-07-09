@@ -2,7 +2,7 @@ from PIL import Image
 from PIL import ImageFont
 from PIL import ImageDraw
 
-def getBinMsg(msg):
+def getBinMsg(msg, spaces):
     lst = []
     for char in msg:
         lst.append(ord(char))
@@ -43,6 +43,8 @@ def main():
     msg = input("What is the message?: ")
     bin_stat = input("Binary? (y/n) ")
     if bin_stat == "y":
+        spaces = ""
+        addSpaces = input("Convert spaces to binary? (y/n) ")
         msg = getBinMsg(msg)
     text_size = int(input("What size will the font be?: "))
     direction = input("Draw the image right to left (RTL) or top to bottom (TTB)? ")
